@@ -16,7 +16,6 @@ class Authenticate extends Middleware
     {
         if (!$request->expectsJson()) {
             $request->session()->put('before_auth_url', url()->current());
-            //session(['before_auth_url' => url()->current()]);
             return route('login');
         }
     }
