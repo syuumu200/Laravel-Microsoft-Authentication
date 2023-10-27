@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -19,12 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'id',
         'username',
-        'discriminator',
         'email',
         'avatar',
-        'verified',
-        'locale',
-        'mfa_enabled',
         'refresh_token'
     ];
 
@@ -41,12 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'refresh_token',
-        'remember_token'
-    ];
-
-    protected $appends = [
-        'string_id'
+        'refresh_token'
     ];
 
     /**
@@ -55,18 +47,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'discriminator' => 'integer',
-        'string_id' => 'string',
-        'verified' => 'boolean',
-        'mfa_enabled' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
-    protected function stringId(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => (string) $this->id,
-        );
-    }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{
-        DiscordController
+        MicrosoftController
 };
 use App\Http\Middleware\Authenticate;
 
@@ -18,5 +18,5 @@ use App\Http\Middleware\Authenticate;
 */
 Route::inertia('/', 'Welcome')->name('index');
 
-Route::get('login', [DiscordController::class, 'login'])->name('login');
-Route::get('logout', [DiscordController::class, 'logout'])->name('logout');
+Route::get('login', [MicrosoftController::class, 'login'])->name('login');
+Route::get('logout', [MicrosoftController::class, 'logout'])->name('logout');

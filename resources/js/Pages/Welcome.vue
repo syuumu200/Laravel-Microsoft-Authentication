@@ -1,8 +1,6 @@
 <template>
   <AppLayout>
-    <p class="text-center">LaravelとInertiaとDiscord Oauth2を統合しました！</p>
-    <Link href="/test">TEST
-    </Link>
+    <p class="text-center">LaravelとInertiaとMicrosoft AccountによるOauth2認証を統合しました！</p>
   </AppLayout>
 </template>
 
